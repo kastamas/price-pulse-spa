@@ -11,6 +11,13 @@ const Footer = () => {
             className="text-blue-500 dark:text-blue-300"
           >
             LinkedIn
+          </a>{' '}
+          |{' '}
+          <a
+            href="https://github.com/kastamas/price-pulse-spa"
+            className="text-blue-500 dark:text-blue-300"
+          >
+            GitHub
           </a>
         </p>
       </div>

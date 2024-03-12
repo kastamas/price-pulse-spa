@@ -7,7 +7,7 @@ const Header = () => {
       <nav className="container mx-auto px-4 py-6 flex justify-between items-center">
         <Link to="/about">
           <div className="text-xl font-bold text-gray-800 dark:text-white">
-            PricePulse SPA
+            PricePulse
           </div>
         </Link>
 
