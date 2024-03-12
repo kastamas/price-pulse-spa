@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import QuoteTable from './QuoteTable';
-import { Link } from 'react-router-dom';
 import { RouterLink } from './RouterLink';
 
 const QuotesPage: React.FC = () => {

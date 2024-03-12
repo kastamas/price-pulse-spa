@@ -10,7 +10,7 @@ const QuoteTable: React.FC = () => {
   const [quotes, setQuotes] = useState<any[]>([]);
   const [modalInfo, setModalInfo] = useState<any>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<any>(null);
 
   const openModal = (quote: any) => {
     setModalInfo(quote);
