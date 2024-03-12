@@ -1,5 +1,19 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import TableHeader from './TableHeader';
+import TableRow from './TableRow';
+import TableCell from './TableCell';
+
+const billion = 1000000000;
+const million = 1000000;
+
+const prettifyNumber = (number) => {
+  if (!isNaN(parseFloat(number)) && isFinite(number)) {
+    return parseFloat(number).toLocaleString('en-US');
+  }
+
+  return number;
+};
 
 const QuoteTable: React.FC = () => {
   const [quotes, setQuotes] = useState<any[]>([]);
@@ -25,44 +39,82 @@ const QuoteTable: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchQuotes(); // Выполняем первый запрос при монтировании
-    const intervalId = setInterval(fetchQuotes, 5000); // Обновляем данные каждые 5 секунд
+    fetchQuotes();
+    const intervalId = setInterval(fetchQuotes, 5000);
 
-    return () => clearInterval(intervalId); // Очищаем интервал при размонтировании компонента
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Symbol</th>
-          <th>Price (USD)</th>
-          <th>Change (24Hr)</th>
-          <th>Rank</th>
-          <th>Market Cap (USD)</th>
-          <th>Supply</th>
-          <th>Volume (24Hr)</th>
-          <th>VWAP (24Hr)</th>
-          <th>Explorer</th>
-        </tr>
+    <table className="min-w-full divide-y divide-gray-200 mb-4">
+      <thead className="bg-gray-50 dark:bg-gray-800">
+        <TableRow>
+          <TableHeader>Rank</TableHeader>
+          <TableHeader>Name</TableHeader>
+          <TableHeader>Price (USD)</TableHeader>
+          <TableHeader>Change (24Hr)</TableHeader>
+          <TableHeader>Market Cap (USD)</TableHeader>
+          <TableHeader>Supply</TableHeader>
+          <TableHeader>Volume (24Hr)</TableHeader>
+          <TableHeader>VWAP (24Hr)</TableHeader>
+          <TableHeader>Explorer</TableHeader>
+        </TableRow>
       </thead>
-      <tbody>
+      <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200">
         {quotes.map((quote) => (
-          <tr key={quote.id}>
-            <td>{quote.name}</td>
-            <td>{quote.symbol}</td>
-            <td>{quote.priceUsd}</td>
-            <td>{quote.changePercent24Hr}</td>
-            <td>{quote.rank}</td>
-            <td>{quote.marketCapUsd}</td>
-            <td>{quote.supply}</td>
-            <td>{quote.volumeUsd24Hr}</td>
-            <td>{quote.vwap24Hr}</td>
-            <td>
-              <a href={quote.explorer}>Explorer</a>
-            </td>
-          </tr>
+          <TableRow key={quote.id}>
+            <TableCell>{quote.rank}</TableCell>
+            <TableCell>
+              {quote.name} ({quote.symbol})
+            </TableCell>
+
+            <TableCell>
+              ${prettifyNumber(parseFloat(quote.priceUsd).toFixed(2))}
+            </TableCell>
+
+            <TableCell
+              className={`${
+                parseFloat(quote.changePercent24Hr) >= 0
+                  ? 'text-green-500'
+                  : 'text-red-500'
+              }`}
+            >
+              {parseFloat(quote.changePercent24Hr).toFixed(2)}%
+            </TableCell>
+
+            <TableCell>
+              $
+              {prettifyNumber(
+                (parseFloat(quote.marketCapUsd) / billion).toFixed(2)
+              )}
+              b
+            </TableCell>
+
+            <TableCell>
+              {prettifyNumber((parseFloat(quote.supply) / million).toFixed(2))}m
+            </TableCell>
+
+            <TableCell>
+              $
+              {prettifyNumber(
+                (parseFloat(quote.volumeUsd24Hr) / billion).toFixed(2)
+              )}
+              b
+            </TableCell>
+
+            <TableCell>
+              ${prettifyNumber(parseFloat(quote.vwap24Hr).toFixed(2))}
+            </TableCell>
+
+            <TableCell>
+              <a
+                href={quote.explorer}
+                className="text-blue-500 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-500"
+              >
+                Explorer
+              </a>
+            </TableCell>
+          </TableRow>
         ))}
       </tbody>
     </table>
