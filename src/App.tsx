@@ -1,10 +1,6 @@
 import './App.css';
 
-import {
-  createBrowserRouter,
-  redirect,
-  RouterProvider,
-} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import ErrorPage from './components/ErrorPage';
 import Root from './routes/Root';
