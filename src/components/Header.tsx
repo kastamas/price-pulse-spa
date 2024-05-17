@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className="bg-white dark:bg-gray-800 shadow-lg">
-      <nav className="container mx-auto px-4 py-6 flex justify-between items-center">
+    <header className="bg-white dark:bg-gray-900 shadow-lg">
+      <nav className="container mx-auto px-4 py-5 flex justify-between items-center">
         <Link to="/about">
           <div className="text-xl font-bold text-gray-800 dark:text-white">
             PricePulse

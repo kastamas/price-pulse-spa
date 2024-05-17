@@ -4,7 +4,7 @@ import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 import TableCell from './TableCell';
 import { Modal } from './Modal';
-import { BILLION, MILLION, prettifyNumber } from '../helpers';
+import { BILLION, MILLION, prettifyNumber } from '../1.shared/helpers';
 
 const QuoteTable: React.FC = () => {
   const [quotes, setQuotes] = useState<any[]>([]);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { RouterLink } from './RouterLink';
+import { RouterLink } from '../components/RouterLink';
 
 const AboutPage: React.FC = () => {
   return (

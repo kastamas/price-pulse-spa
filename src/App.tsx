@@ -2,10 +2,10 @@ import './App.css';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import ErrorPage from './components/ErrorPage';
-import Root from './routes/Root';
-import AboutPage from './components/AboutPage';
-import QuotesPage from './components/QuotesPage';
+import ErrorPage from './5.pages/ErrorPage';
+import Root from './6.app/Root';
+import AboutPage from './5.pages/AboutPage';
+import QuotesPage from './5.pages/QuotesPage';
 
 const router = createBrowserRouter(
   [

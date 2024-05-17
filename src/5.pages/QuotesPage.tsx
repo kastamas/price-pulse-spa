@@ -1,6 +1,6 @@
 import React from 'react';
-import QuoteTable from './QuoteTable';
-import { RouterLink } from './RouterLink';
+import QuoteTable from '../components/QuoteTable';
+import { RouterLink } from '../components/RouterLink';
 
 const QuotesPage: React.FC = () => {
   return (

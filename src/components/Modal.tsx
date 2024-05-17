@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { prettifyNumber } from '../helpers';
+import { prettifyNumber } from '../1.shared/helpers';
 
 interface ComponentProps {
   isOpen: boolean;

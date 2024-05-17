@@ -8,3 +8,16 @@ export const prettifyNumber = (number: any) => {
 
   return number;
 };
+
+function removeAndAddItemToArray(users) {
+  const idsToRemove = ['z8'];
+  const filteredUsers = users.filter((item) => !idsToRemove.includes(item));
+
+  return [
+    ...filteredUsers,
+    {
+      id: 's7',
+      name: 'Sara',
+    },
+  ];
+}
